@@ -24,7 +24,7 @@ for version in "${versions[@]}"; do
 	(
 		set -x
 		sed -ri 's/^(ENV GOLANG_VERSION) .*/\1 '"$fullVersion"'/' "$version/Dockerfile"
-		sed -ri 's/^(FROM golang):.*/\1:'"$versionTag"'/' "$version/"*"/Dockerfile"
+		sed -ri 's/^(FROM golang):.*/\1:'"$versionTag"'-scm/' "$version/"*"/Dockerfile"
 		cp go-wrapper "$version/"
 	)
 	for variant in wheezy; do
@@ -32,7 +32,7 @@ for version in "${versions[@]}"; do
 			(
 				set -x
 				cp "$version/Dockerfile" "$version/go-wrapper" "$version/$variant/"
-				sed -i 's/^FROM .*/FROM buildpack-deps:'"$variant"'-scm/' "$version/$variant/Dockerfile"
+				sed -i 's/^FROM .*/FROM armbuild\/buildpack-deps:'"$variant"'/' "$version/$variant/Dockerfile"
 			)
 		fi
 	done

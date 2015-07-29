@@ -1,4 +1,4 @@
-FROM golang:1.5beta2
+FROM armbuild/golang:1.5beta2
 
 RUN mkdir -p /go/src/app
 WORKDIR /go/src/app

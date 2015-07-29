@@ -1,4 +1,4 @@
-FROM buildpack-deps:wheezy-scm
+FROM armbuild/buildpack-deps:wheezy
 
 # gcc for cgo
 RUN apt-get update && apt-get install -y \
