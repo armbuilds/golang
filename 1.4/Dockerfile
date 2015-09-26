@@ -1,9 +1,10 @@
 FROM armbuilds/ubuntu-base:14.04.3
 
 # gcc for cgo
-RUN apt-get update && apt-get install -y \
-		gcc libc6-dev make \
-		--no-install-recommends \
+RUN apt-get update 
+  && apt-get install gcc \
+  && libc6-dev \
+  && make --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GOLANG_VERSION 1.4.2
