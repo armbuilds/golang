@@ -1,4 +1,4 @@
-FROM armbuilds/ubuntu-base:14.04.3
+FROM armbuilds/debian-base:jessie
 
 # gcc for cgo
 RUN apt-get update 
